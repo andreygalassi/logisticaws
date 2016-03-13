@@ -6,7 +6,10 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 
 	<persistence-unit name="logistica-mysql">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.agrego.ws.logistica.domain.Malha</class>
+		
+		<class>br.agrego.ws.logistica.domain.Mapa</class>
+		<class>br.agrego.ws.logistica.domain.Rota</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/logistica" />

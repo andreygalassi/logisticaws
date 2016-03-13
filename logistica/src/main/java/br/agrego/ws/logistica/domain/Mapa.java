@@ -1,17 +1,26 @@
 package br.agrego.ws.logistica.domain;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
-public class Malha {
+public class Mapa {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String teste;
-
+	private String nome;
+	@OneToMany(mappedBy="mapa",orphanRemoval=true,fetch=FetchType.EAGER)
+	private List<Rota> rotas = new ArrayList<Rota>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -20,13 +29,6 @@ public class Malha {
 		this.id = id;
 	}
 
-	public String getTeste() {
-		return teste;
-	}
-
-	public void setTeste(String teste) {
-		this.teste = teste;
-	}
 
 	@Override
 	public int hashCode() {
@@ -44,7 +46,7 @@ public class Malha {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Malha other = (Malha) obj;
+		Mapa other = (Mapa) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -53,21 +55,30 @@ public class Malha {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Malha [");
-		if (id != null) {
-			builder.append("id=");
-			builder.append(id);
-			builder.append(", ");
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<Rota> getRotas() {
+		return rotas;
+	}
+
+	public void setRotas(List<Rota> rotas) {
+		this.rotas = rotas;
+	}
+
+	@Transient
+	public BigDecimal calculaDistanciaTotal(String origem, String destino) {
+		for (Rota rotaOrigem : rotas) {
+			for (Rota rotaDestino : rotas) {
+				
+			}
 		}
-		if (teste != null) {
-			builder.append("teste=");
-			builder.append(teste);
-		}
-		builder.append("]");
-		return builder.toString();
+		return null;
 	}
 	
 }

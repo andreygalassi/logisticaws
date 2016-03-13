@@ -1,7 +1,7 @@
 package br.agrego.ws.logistica.ws;
 
-import br.agrego.ws.logistica.dao.MalhaDao;
-import br.agrego.ws.logistica.domain.Malha;
+import br.agrego.ws.logistica.dao.MapaDao;
+import br.agrego.ws.logistica.domain.Mapa;
 
 public class PublicaWebService {
 
@@ -12,11 +12,11 @@ public class PublicaWebService {
 //		
 //		Endpoint.publish(url, ws);
 		
-		Malha malha = new Malha();
+		Mapa malha = new Mapa();
 		
-		MalhaDao dao = new MalhaDao();
-		malha=dao.load(Malha.class, 2l);
-		dao.delete(Malha.class,3l);
+		MapaDao dao = new MapaDao();
+		malha=dao.load(Mapa.class, 2l);
+		dao.delete(Mapa.class,3l);
 		
 //		dao.insert(malha);
 //
