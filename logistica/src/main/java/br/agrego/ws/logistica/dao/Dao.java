@@ -16,23 +16,32 @@ public class Dao<T> {
 	}
 	
 	public void insert(final T entity) {
+		getEntityManager().getTransaction().begin();
 		getEntityManager().persist(entity);
+		getEntityManager().getTransaction().commit();
+//		getEntityManager().close();
 	}
 
-	public void delete(final T entity) {
+	public void delete(Class<T> clazz, Long id) {
+		getEntityManager().getTransaction().begin();
+		T entity = getEntityManager().find(clazz, id);
 		getEntityManager().remove(entity);
+		getEntityManager().getTransaction().commit();
 	}
 
 	public void update(final T entity) {
+		getEntityManager().getTransaction().begin();
 		getEntityManager().merge(entity);
+		getEntityManager().getTransaction().commit();
 	}
 
 	public T load(Class<T> clazz, Long id) {
 		return getEntityManager().find(clazz, id);
 	}
 
-	public List<?> findAll(Class<T> clazz) {
-		return findByJPQL(clazz, "select this from " + clazz.getSimpleName() + " this");
+	@SuppressWarnings("unchecked")
+	public List<T> findAll(Class<T> clazz) {
+		return (List<T>) findByJPQL(clazz, "select this from " + clazz.getSimpleName() + " this");
 	}
 
 	protected List<?> findByJPQL(Class<T> clazz, String jpql) {

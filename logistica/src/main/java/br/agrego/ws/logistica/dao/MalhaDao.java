@@ -1,5 +1,7 @@
 package br.agrego.ws.logistica.dao;
 
-public class MalhaDao {
+import br.agrego.ws.logistica.domain.Malha;
+
+public class MalhaDao extends Dao<Malha> {
 
 }
