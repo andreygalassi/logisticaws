@@ -9,16 +9,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement(name="rota")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class Rota {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlTransient
 	private Long id;
+	
+	@XmlElement(name="origem")
 	private String origem;
+	
+	@XmlElement(name="destino")
 	private String destino;
+	
+	@XmlElement(name="distancia")
 	private BigDecimal distancia;
-	@ManyToOne(cascade=CascadeType.MERGE,fetch=FetchType.LAZY)
+	
+	@ManyToOne(cascade= {CascadeType.MERGE},fetch=FetchType.LAZY)
+	@XmlTransient
 	private Mapa mapa;
 	
 	@Deprecated

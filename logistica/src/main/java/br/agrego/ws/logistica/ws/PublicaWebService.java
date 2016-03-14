@@ -1,36 +1,17 @@
 package br.agrego.ws.logistica.ws;
 
-import br.agrego.ws.logistica.dao.MapaDao;
-import br.agrego.ws.logistica.domain.Mapa;
+import javax.xml.ws.Endpoint;
 
 public class PublicaWebService {
 
 	public static void main(String[] args) {
-//		MalhaWS ws = new MalhaWS();
-//		
-//		String url = "http://localhost:8080/logisticaws";
-//		
-//		Endpoint.publish(url, ws);
 		
-		Mapa malha = new Mapa();
+		MalhaWS ws = new MalhaWS();
 		
-		MapaDao dao = new MapaDao();
-		malha=dao.load(Mapa.class, 2l);
-		dao.delete(Mapa.class,3l);
+		String url = "http://localhost:8080/logisticaws";
 		
-//		dao.insert(malha);
-//
-//		List<Malha> lista = dao.findAll(Malha.class);
-//		
-//		System.out.println(lista);
+		Endpoint.publish(url, ws);
 		
-		
-//		EntityManager em = new JPAUtil().getEntityManager();
-//		em.getTransaction().begin();
-//
-//		em.persist(malha);
-//
-//		em.getTransaction().commit();
-//		em.close();
+		System.out.println("WS rodando!");
 	}
 }

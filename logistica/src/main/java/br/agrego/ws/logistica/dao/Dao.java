@@ -3,6 +3,7 @@ package br.agrego.ws.logistica.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.agrego.ws.logistica.util.JPAUtil;
@@ -19,7 +20,6 @@ public class Dao<T> {
 		getEntityManager().getTransaction().begin();
 		getEntityManager().persist(entity);
 		getEntityManager().getTransaction().commit();
-//		getEntityManager().close();
 	}
 
 	public void delete(Class<T> clazz, Long id) {
@@ -47,16 +47,11 @@ public class Dao<T> {
 	protected List<?> findByJPQL(Class<T> clazz, String jpql) {
 		TypedQuery<T> listQuery = getEntityManager().createQuery(jpql, clazz);
 
-//		if (getPagination() != null) {
-//			String countQuery = createCountQuery(jpql);
-//			Query query = getEntityManager().createQuery(countQuery);
-//			Number cResults = (Number) query.getSingleResult();
-//			getPagination().setTotalResults(cResults.intValue());
-//			listQuery.setFirstResult(getPagination().getFirstResult());
-//			listQuery.setMaxResults(getPagination().getPageSize());
-//		}
-
 		return listQuery.getResultList();
+	}
+	
+	protected Query createQuery(final String ql) {
+		return getEntityManager().createQuery(ql);
 	}
 
 	public EntityManager getEntityManager() {
