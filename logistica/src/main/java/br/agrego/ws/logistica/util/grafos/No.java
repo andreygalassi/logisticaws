@@ -2,6 +2,11 @@ package br.agrego.ws.logistica.util.grafos;
 
 import java.util.List;
 
+/**
+ * Identificando cada nó com seu nome e listando as arestas de conexões com outros nós
+ * @author Andrey Galassi
+ *
+ */
 public class No {
 	
 	private final String nome;
@@ -17,6 +22,10 @@ public class No {
 
 	public void setArestas(List<Aresta> arestas) {
 		this.arestas = arestas;
+	}
+	
+	public void addAresta(Aresta aresta) {
+		this.arestas.add(aresta);
 	}
 
 	public String getNome() {
