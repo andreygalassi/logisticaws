@@ -35,3 +35,18 @@ Nós solicitamos que você trabalhe no desenvolvimento desse sistema sozinho e n
 problema pela internet. 
  
 Caso você precise de mais tempo, favor nos avisar.
+============================================================
+
+Este é um Webservice criado para atender o desafio da wallmart.
+Aqui foi utilizado o JAX-WS para desenvolver um WS em SOAP.
+
+Um endereço valido para acessar o WSDL (arquivo descritor do Webservice) é o http://localhost:8080?wsdl e 
+pode ser acessado após executar o .jar criado.
+
+Este WS tem basicamente as 2 funções solicitadas pelo desafio, a criação de uma nova malha logistica e
+a função com o calculo da melhor rota de um mapa específico.
+Os métodos criados são:
+http://localhost:8080?melhorRota
+http://localhost:8080?novaMalha
+ 
+
