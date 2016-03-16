@@ -49,4 +49,6 @@ Os métodos criados são:
 http://localhost:8080?melhorRota
 http://localhost:8080?novaMalha
  
+O calculo da menor custo de distância leva em consideração o estudo dos grafos, mais especificamente o 
+algoritmo de Dijkstra que leva em consideração o peso de cada aresta entre 2 pontos.
 
