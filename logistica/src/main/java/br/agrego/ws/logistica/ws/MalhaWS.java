@@ -8,6 +8,7 @@ import javax.jws.WebService;
 import br.agrego.ws.logistica.dao.MapaDao;
 import br.agrego.ws.logistica.domain.Mapa;
 import br.agrego.ws.logistica.domain.Rota;
+import br.agrego.ws.logistica.util.GrafoUtil;
 
 @WebService(name="malha")
 public class MalhaWS {
@@ -19,7 +20,9 @@ public class MalhaWS {
 
 		Mapa mapa = mapaDao.findByNome(mapaVO.getMapa());
 		
-		RotaVO rotaVO = new RotaVO(mapa.getMenotCaminho(), mapa.calculaCusto(mapaVO.getOrigem(), mapaVO.getDestino(), mapaVO.getAutonomia(), mapaVO.getValorCombustivel()));
+		GrafoUtil grafo = new GrafoUtil(mapa.getRotas(), mapaVO.getOrigem(), mapaVO.getDestino(), mapaVO.getAutonomia(), mapaVO.getValorCombustivel());
+		
+		RotaVO rotaVO = new RotaVO(grafo.getMelhorCaminho().toString(), grafo.getCusto());
 		
 		return rotaVO;
 		

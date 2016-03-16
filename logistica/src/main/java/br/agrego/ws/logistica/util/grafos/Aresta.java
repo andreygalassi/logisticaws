@@ -34,5 +34,9 @@ public class Aresta {
 		return destino;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return origem.getNome();
+	}
 }

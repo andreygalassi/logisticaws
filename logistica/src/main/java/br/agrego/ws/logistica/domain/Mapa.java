@@ -1,6 +1,5 @@
 package br.agrego.ws.logistica.domain;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -66,28 +64,6 @@ public class Mapa {
 	public void setRotas(List<Rota> rotas) {
 		this.rotas = rotas;
 	}
-
-	@Transient
-	public BigDecimal calculaDistanciaTotal(String origem, String destino) {
-		//TODO identificar algoritmo para calcular a menor distancia, utilizar teoria dos grafos, ex: Dijkstra
-		
-		return new BigDecimal("25");
-	}
-
-	@Transient
-	public BigDecimal calculaCusto(String origem, String destino, BigDecimal autonomia, BigDecimal valorCombustivel) {
-		BigDecimal distanciaTotal = calculaDistanciaTotal(origem,destino);
-		
-		BigDecimal custo = distanciaTotal.divide(autonomia).multiply(valorCombustivel);
-		return custo;
-	}
-
-	@Transient
-	public String getMenotCaminho() {
-		// TODO usar o algoritmo para identificar o menor caminho
-		return "A B D";
-	}
-
 
 	@Override
 	public int hashCode() {

@@ -1,5 +1,6 @@
 package br.agrego.ws.logistica.util.grafos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
 public class No {
 	
 	private final String nome;
-	private List<Aresta> arestas;
+	private List<Aresta> arestas = new ArrayList<Aresta>();
 	
 	public No(String nome) {
 		this.nome = nome;
@@ -35,6 +36,31 @@ public class No {
 	@Override
 	public String toString() {
 		return nome;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		No other = (No) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
 	}
 
 }

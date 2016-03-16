@@ -1,9 +1,12 @@
 package br.agrego.ws.logistica.domain;
 
+import static org.junit.Assert.assertEquals;
+
 import java.math.BigDecimal;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import br.agrego.ws.logistica.util.GrafoUtil;
 
 
 public class MapaTeste {
@@ -20,8 +23,10 @@ public class MapaTeste {
 		mapa.addRota(new Rota("D", "E", new BigDecimal("30")));
 
 		mapa.setNome("SP");
+
+		GrafoUtil grafo = new GrafoUtil(mapa.getRotas(), "A", "D", BigDecimal.ZERO, BigDecimal.ZERO);
 		
-		Assert.assertEquals(new BigDecimal("25"), mapa.calculaDistanciaTotal("A","D"));
+		assertEquals(new BigDecimal("25"), grafo.getDistancia());
 
 	}
 	
@@ -37,8 +42,10 @@ public class MapaTeste {
 		
 		BigDecimal autonomia = new BigDecimal("10");
 		BigDecimal valorLitro = new BigDecimal("2,50");
+		
+		GrafoUtil grafo = new GrafoUtil(mapa.getRotas(), "A", "D", autonomia, valorLitro);
 
-		Assert.assertEquals(new BigDecimal("25"), mapa.calculaCusto("A","D",autonomia,valorLitro));
+		assertEquals(new BigDecimal("6.25"), grafo.getCusto());
 	}
 	
 }
