@@ -37,7 +37,7 @@ problema pela internet.
 Caso você precise de mais tempo, favor nos avisar.
 ============================================================
 
-Este é um Webservice criado para atender o desafio da wallmart.
+Este é um Webservice criado para atender o desafio da Walmart.
 Aqui foi utilizado o JAX-WS para desenvolver um WS em SOAP.
 
 Um endereço valido para acessar o WSDL (arquivo descritor do Webservice) é o http://localhost:8080?wsdl e 
